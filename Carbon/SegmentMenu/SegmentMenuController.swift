@@ -296,7 +296,7 @@ extension SegmentMenuController:UIScrollViewDelegate{
                 let selectedSegmentWidth = self.segmentControl.getWidthForSegment(index: selectedIndex)
                 let selectedOriginX = self.segmentControl.getMinxForSegment(index: selectedIndex)
                 var backTabWidth :CGFloat = 0;
-                var backIndex = selectedIndex;
+                let backIndex = selectedIndex;
                 if !((backIndex-1) < 0){
                     backTabWidth = self.segmentControl.getWidthForSegment(index: backIndex)
                 }
@@ -323,11 +323,11 @@ extension SegmentMenuController:UIScrollViewDelegate{
                 }
                 
             }else{
-                var newX = offset.x - scrollViewWidth;
+                let newX = offset.x - scrollViewWidth;
                 let selectedSegmentWidth = self.segmentControl.getWidthForSegment(index: selectedIndex)
                 let selectedOriginX = self.segmentControl.getMinxForSegment(index: selectedIndex)
                 var nextTabWidth:CGFloat = 0;
-                var nextIndex = selectedIndex
+                let nextIndex = selectedIndex
                 if (!((nextIndex+1) >= self.segmentControl.numberOfSegments)) {
                     nextTabWidth = self.segmentControl.getWidthForSegment(index: nextIndex)
                 }
