@@ -24,8 +24,7 @@ Pod::Spec.new do |s|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  s.description  = <<-DESC
-                   DESC
+  s.description  = "a swift segment menu for iOS"
 
   s.homepage     = "https://github.com/nhhca/SegmentMenu"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -52,7 +51,7 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
 
-  s.author             = { "nhhca" => "" }
+  s.author             = { "nhhca" => "2390860850@qq.com" }
   # Or just: s.author    = "nhhca"
   # s.authors            = { "nhhca" => "" }
   # s.social_media_url   = "http://twitter.com/nhhca"
@@ -78,9 +77,7 @@ Pod::Spec.new do |s|
   #  Specify the location from where the source should be retrieved.
   #  Supports git, hg, bzr, svn and HTTP.
   #
-
-  s.source       = { :git => "https://github.com/nhhca/SegmentMenu.git", :tag => "#{s.version}" }
-
+  s.source       = { :git => "https://github.com/nhhca/SegmentMenu.git", :tag => "0.0.1" }
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
@@ -115,7 +112,7 @@ Pod::Spec.new do |s|
   #  the lib prefix of their name.
   #
 
-  # s.framework  = "SomeFramework"
+  s.framework  = "UIKit"
   # s.frameworks = "SomeFramework", "AnotherFramework"
 
   # s.library   = "iconv"
