@@ -15,8 +15,8 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "SegmentMenu"
-  s.version      = "1.0.1"
+  s.name         = "Caidanlan"
+  s.version      = "1.0.2"
   s.summary      = "swift SegmentMenu."
 
   # This description is used to generate tags and improve search results.
@@ -88,7 +88,9 @@ LICENSE
   #  Specify the location from where the source should be retrieved.
   #  Supports git, hg, bzr, svn and HTTP.
   #
-  s.source       = { :git => "https://github.com/nhhca/SegmentMenu.git", :tag => "1.0.1" }
+  s.source       = { :git => "https://github.com/nhhca/SegmentMenu.git", :tag => s.version }
+
+
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  CocoaPods is smart about how it includes source code. For source files
