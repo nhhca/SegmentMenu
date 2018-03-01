@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "Caidanlan"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "swift SegmentMenu."
 
   # This description is used to generate tags and improve search results.
@@ -99,7 +99,7 @@ LICENSE
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Carbon", "Carbon/SegmentMenu/*.{swift}"
+  s.source_files  = "Carbon/SegmentMenu/*.{swift}"
   #s.exclude_files = "Classes/Exclude"
   # s.public_header_files = "Classes/**/*.h"
 
