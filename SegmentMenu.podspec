@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  s.name         = "Caidanlan"
+  s.name         = "SegmentMenu"
   s.version      = "1.0.3"
   s.summary      = "swift SegmentMenu."
 

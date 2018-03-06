@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SegmentMenuController: UIViewController{
+public class SegmentMenuController: UIViewController{
     
     public var tabbarHeight:CGFloat = 40{
         didSet{
@@ -46,21 +46,21 @@ class SegmentMenuController: UIViewController{
         ]
         self.segmentControl.setTitleTextAttributes(titleAttr, for: .selected)
     }
-    public var toolBar = UIToolbar()
-    public var segmentControl:SegmentControl{
+    var toolBar = UIToolbar()
+    var segmentControl:SegmentControl{
         return self.segmentScrollView.segmentControl
     }
-    public var segmentScrollView:SegmentScrollView!
+    var segmentScrollView:SegmentScrollView!
     
-    private var toolBarHeight:NSLayoutConstraint!
-    fileprivate var items:[String]!
-    fileprivate var delegate:SegmentMenuProtocol!
-    private var viewControllers:[Int:UIViewController] = [Int:UIViewController]()
+    var toolBarHeight:NSLayoutConstraint!
+    var items:[String]!
+    var delegate:SegmentMenuProtocol!
+    var viewControllers:[Int:UIViewController] = [Int:UIViewController]()
 
-    fileprivate var pageViewController:UIPageViewController!
-    private var pageScrollView:UIScrollView?
-    private var selectedIndex = 0
-    private var isSwipeLocked = false
+    var pageViewController:UIPageViewController!
+    var pageScrollView:UIScrollView?
+    var selectedIndex = 0
+    var isSwipeLocked = false
    
     
     public func config(with items:[String],delegate:SegmentMenuProtocol){
@@ -98,7 +98,7 @@ class SegmentMenuController: UIViewController{
     }
     
     
-    fileprivate func createSegmentScrollView(){
+    func createSegmentScrollView(){
         self.segmentScrollView = SegmentScrollView.init(frame: .zero, items: self.items)
         self.segmentScrollView.clipsToBounds = false
         self.toolBar.addSubview(self.segmentScrollView)
@@ -199,29 +199,29 @@ class SegmentMenuController: UIViewController{
         self.moveTo(index: sender.selectedSegmentIndex,animatite: true)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.pageViewController.viewWillAppear(animated)
     }
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.pageViewController.viewDidAppear(animated)
     }
-    override func viewWillDisappear(_ animated: Bool) {
+    override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.pageViewController.viewWillDisappear(animated)
     }
-    override func viewDidDisappear(_ animated: Bool) {
+    override public func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.pageViewController.viewDidDisappear(animated)
     }
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -248,7 +248,7 @@ class SegmentMenuController: UIViewController{
     }
 }
 extension SegmentMenuController:UIPageViewControllerDelegate,UIPageViewControllerDataSource{
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         var index = selectedIndex
         index -= 1
         if index >= 0{
@@ -256,7 +256,7 @@ extension SegmentMenuController:UIPageViewControllerDelegate,UIPageViewControlle
         }
         return nil
     }
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         var index = selectedIndex
         index += 1
         if index < self.segmentScrollView.segmentControl.numberOfSegments{
@@ -264,7 +264,7 @@ extension SegmentMenuController:UIPageViewControllerDelegate,UIPageViewControlle
         }
         return nil
     }
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed{
             let currentVc = pageViewController.viewControllers?.first
             let nsDic = NSDictionary.init(dictionary: self.viewControllers)
@@ -276,13 +276,13 @@ extension SegmentMenuController:UIPageViewControllerDelegate,UIPageViewControlle
     }
 }
 extension SegmentMenuController:UIScrollViewDelegate{
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
          self.segmentScrollView.segmentControl.isUserInteractionEnabled = false
     }
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
          self.segmentScrollView.segmentControl.isUserInteractionEnabled = true
     }
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset:CGPoint = scrollView.contentOffset;
         let segmentedWidth:CGFloat = self.segmentControl.frame.size.width
         let scrollViewWidth:CGFloat = scrollView.frame.size.width

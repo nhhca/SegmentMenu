@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 @objc
-protocol SegmentMenuProtocol {
+public protocol SegmentMenuProtocol {
     func segmentMenuController(_ segmentController:SegmentMenuController,
                             viewControllerAt index:UInt)->UIViewController
     @objc optional func segmentMenuController(_ segmentController:SegmentMenuController,
