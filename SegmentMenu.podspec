@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SegmentMenu"
-  s.version      = "1.0.4"
+  s.version      = "1.0.5"
   s.summary      = "swift SegmentMenu."
 
   # This description is used to generate tags and improve search results.
@@ -73,7 +73,8 @@ LICENSE
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  # s.platform     = :ios
+ s.swift_version = "3.2"
+
   s.platform     = :ios, "9.0"
 
   #  When using multiple platforms
