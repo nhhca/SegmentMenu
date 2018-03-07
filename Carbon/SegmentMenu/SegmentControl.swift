@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SegmentControl: UISegmentedControl{
+public class SegmentControl: UISegmentedControl{
     var indicatorHeight:CGFloat = 3
     var indicatorMinX:CGFloat = 0
     var IndicatorWidth:CGFloat = 0
@@ -55,7 +55,7 @@ class SegmentControl: UISegmentedControl{
         
     }
     
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         super.draw(rect)
         var totalWidth:CGFloat = 0
         for (index,segment) in self.segments.enumerated(){
@@ -112,7 +112,7 @@ class SegmentControl: UISegmentedControl{
         return false
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

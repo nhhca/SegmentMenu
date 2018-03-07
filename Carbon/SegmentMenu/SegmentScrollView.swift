@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SegmentScrollView: UIScrollView {
+public class SegmentScrollView: UIScrollView {
     var segmentControl:SegmentControl!
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,7 +32,7 @@ class SegmentScrollView: UIScrollView {
         self.addSubview(segmentControl)
     }
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         if let mysuperView = self.superview{
             mysuperView.bringSubview(toFront: self)
@@ -45,7 +45,7 @@ class SegmentScrollView: UIScrollView {
        
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

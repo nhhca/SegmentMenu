@@ -47,10 +47,10 @@ public class SegmentMenuController: UIViewController{
         self.segmentControl.setTitleTextAttributes(titleAttr, for: .selected)
     }
     var toolBar = UIToolbar()
-    var segmentControl:SegmentControl{
+    public var segmentControl:SegmentControl{
         return self.segmentScrollView.segmentControl
     }
-    var segmentScrollView:SegmentScrollView!
+    public var segmentScrollView:SegmentScrollView!
     
     var toolBarHeight:NSLayoutConstraint!
     var items:[String]!
