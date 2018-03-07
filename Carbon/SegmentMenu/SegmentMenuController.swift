@@ -34,15 +34,15 @@ public class SegmentMenuController: UIViewController{
     }
     public func setNormalColor(color:UIColor,font:UIFont){
         let titleAttr:[String:Any] = [
-            NSAttributedStringKey.foregroundColor.rawValue:color,
-            NSAttributedStringKey.font.rawValue:font
+            NSAttachmentAttributeName:color,
+            NSFontAttributeName:font
         ]
         self.segmentControl.setTitleTextAttributes(titleAttr, for: .normal)
     }
     public func setSelectedColor(color:UIColor,font:UIFont){
         let titleAttr:[String:Any] = [
-            NSAttributedStringKey.foregroundColor.rawValue:color,
-            NSAttributedStringKey.font.rawValue:font
+            NSAttachmentAttributeName:color,
+            NSFontAttributeName:font
         ]
         self.segmentControl.setTitleTextAttributes(titleAttr, for: .selected)
     }
@@ -217,7 +217,7 @@ public class SegmentMenuController: UIViewController{
     }
     override public func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 
