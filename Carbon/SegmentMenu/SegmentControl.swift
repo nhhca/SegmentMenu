@@ -34,12 +34,12 @@ public class SegmentControl: UISegmentedControl{
         self.addSubview(self.indicator)
         
         let titleAttr:[String:Any] = [
-            NSAttachmentAttributeName:self.tintColor.withAlphaComponent(0.8),
+            NSForegroundColorAttributeName:self.tintColor.withAlphaComponent(0.8),
             NSFontAttributeName:UIFont.boldSystemFont(ofSize: 14)
         ]
         self.setTitleTextAttributes(titleAttr, for: .normal)
         let selectedTitleAttr:[String:Any] = [
-            NSAttachmentAttributeName:self.tintColor,
+            NSForegroundColorAttributeName:self.tintColor,
             NSFontAttributeName:UIFont.boldSystemFont(ofSize: 14)
         ]
         self.setTitleTextAttributes(selectedTitleAttr, for: .selected)

@@ -34,14 +34,14 @@ public class SegmentMenuController: UIViewController{
     }
     public func setNormalColor(color:UIColor,font:UIFont){
         let titleAttr:[String:Any] = [
-            NSAttachmentAttributeName:color,
+            NSForegroundColorAttributeName:color,
             NSFontAttributeName:font
         ]
         self.segmentControl.setTitleTextAttributes(titleAttr, for: .normal)
     }
     public func setSelectedColor(color:UIColor,font:UIFont){
         let titleAttr:[String:Any] = [
-            NSAttachmentAttributeName:color,
+            NSForegroundColorAttributeName:color,
             NSFontAttributeName:font
         ]
         self.segmentControl.setTitleTextAttributes(titleAttr, for: .selected)
