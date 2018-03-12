@@ -90,7 +90,7 @@ public class SegmentControl: UISegmentedControl{
         super.setImage(image, forSegmentAt: segment)
         synImageColor()
     }
-   public func updateIndicatorWithAnimation(with animate:Bool){
+    func updateIndicatorWithAnimation(with animate:Bool){
         let indicatorY = self.frame.size.height - self.indicatorHeight
         UIView.animate(withDuration: animate ? 0.3:0) {
             var rect = self.indicator.frame;
@@ -110,7 +110,7 @@ public class SegmentControl: UISegmentedControl{
         
     }
     
-    @objc func segmentedTapped(sender:Any){
+    @objc public func segmentedTapped(sender:Any){
         self.indicatorMinX = self.getMinxForSegment(index: self.selectedSegmentIndex)
         self.IndicatorWidth = self.getWidthForSegment(index: self.selectedSegmentIndex)
         self.updateIndicatorWithAnimation(with: true)
