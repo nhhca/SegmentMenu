@@ -19,12 +19,12 @@ public class SegmentScrollView: UIScrollView {
         }
     }
     
-    public convenience init(frame: CGRect,items:[String]) {
+    public convenience init(frame: CGRect,items:[Any]) {
         self.init(frame: frame)
         self.setItems(items: items)
     }
     
-    func setItems(items:[String]){
+    func setItems(items:[Any]){
         for view in self.subviews{
             view.removeFromSuperview()
         }
@@ -38,7 +38,7 @@ public class SegmentScrollView: UIScrollView {
             mysuperView.bringSubview(toFront: self)
         }
         var frame = segmentControl.frame
-        frame.size.height = self.frame.size.height
+        frame.size.height = self.frame.size.height - 0.5
         segmentControl.frame = frame
         let contentWidth = max(segmentControl.frame.width, self.frame.size.width+1)
         self.contentSize = CGSize(width:contentWidth,height:self.frame.size.height)

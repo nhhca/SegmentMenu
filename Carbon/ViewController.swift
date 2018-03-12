@@ -9,11 +9,36 @@
 import UIKit
 
 class ViewController: UIViewController,SegmentMenuProtocol{
-    var items = ["新闻","天气"]
+    func generateImage(for view: UIView) -> UIImage? {
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, UIScreen.main.scale)
+        if let context = UIGraphicsGetCurrentContext() {
+            view.layer.render(in: context)
+            return UIGraphicsGetImageFromCurrentImageContext()
+        }
+        return nil
+    }
+    
+    var iconWithTextImage: UIImage {
+        let button = UIButton()
+        let icon = UIImage(named: "home")
+        button.setImage(icon, for: .normal)
+        button.setTitle("Home", for: .normal)
+        button.setTitleColor(UIColor.blue, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 10)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 10)
+        button.sizeToFit()
+        return generateImage(for: button) ?? UIImage()
+    }
+
+    //var items = ["新闻","天气",iconWithTextImage]
     override func viewDidLoad() {
         super.viewDidLoad()
         let segmentVc = SegmentMenuController()
-        segmentVc.config(with: items, delegate: self)
+        segmentVc.config(with:  ["新闻","天气",iconWithTextImage], delegate: self)
         segmentVc.style()
         segmentVc.insertIntoRootController(rootController: self)
     }

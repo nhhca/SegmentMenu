@@ -13,6 +13,9 @@ public class SegmentControl: UISegmentedControl{
     var indicatorMinX:CGFloat = 0
     var IndicatorWidth:CGFloat = 0
     let indicator = UIImageView()
+    public var line = UIView()
+    var imageNormalColor:UIColor = .clear
+    var imageSelectedColor:UIColor = .clear
     public var extraWidth:CGFloat = 0{
         didSet{
             self.setNeedsDisplay()//recall drawrect
@@ -32,6 +35,9 @@ public class SegmentControl: UISegmentedControl{
         self.apportionsSegmentWidthsByContent = true
         self.indicator.backgroundColor = self.tintColor
         self.addSubview(self.indicator)
+
+        self.line.backgroundColor = UIColor(red: 214, green: 214, blue: 214, alpha: 1.0)
+        self.addSubview(self.line)
         
         let titleAttr:[String:Any] = [
             NSForegroundColorAttributeName:self.tintColor.withAlphaComponent(0.8),
@@ -52,7 +58,6 @@ public class SegmentControl: UISegmentedControl{
             self.IndicatorWidth = self.getWidthForSegment(index: self.selectedSegmentIndex)
             self.updateIndicatorWithAnimation(with: false)
         }
-        
     }
     
     override public func draw(_ rect: CGRect) {
@@ -75,7 +80,10 @@ public class SegmentControl: UISegmentedControl{
             self.IndicatorWidth = self.getWidthForSegment(index: self.selectedSegmentIndex)
             self.updateIndicatorWithAnimation(with: false)
         }
+        synImageColor()
     }
+    
+    
     
     func updateIndicatorWithAnimation(with animate:Bool){
         let indicatorY = self.frame.size.height - self.indicatorHeight
@@ -88,11 +96,48 @@ public class SegmentControl: UISegmentedControl{
             self.indicator.frame = rect;
         }
     }
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        self.line.frame = CGRect(x:0,
+                                 y:self.frame.size.height-0.5,
+                             width:self.frame.size.width,
+                            height:0.5)
+        
+    }
     
     @objc func segmentedTapped(sender:Any){
         self.indicatorMinX = self.getMinxForSegment(index: self.selectedSegmentIndex)
         self.IndicatorWidth = self.getWidthForSegment(index: self.selectedSegmentIndex)
         self.updateIndicatorWithAnimation(with: true)
+    }
+    override public func setTitleTextAttributes(_ attributes: [AnyHashable : Any]?, for state: UIControlState) {
+        super.setTitleTextAttributes(attributes, for: state)
+        if state == .normal{
+            imageNormalColor = attributes![NSForegroundColorAttributeName] as! UIColor
+            synImageColor()
+        }else if state == .selected{
+            imageSelectedColor = attributes![NSForegroundColorAttributeName] as! UIColor
+            synImageColor()
+        }
+    }
+    
+    public override func didChangeValue(forKey key: String) {
+        if key == "selectedSegmentIndex" {
+            synImageColor()
+        }
+    }
+    func synImageColor(){
+        for (index, segment) in self.segments.enumerated() {
+            for subview in segment.subviews{
+                if subview.isKind(of: UIImageView.self){
+                    if index == selectedSegmentIndex{
+                        subview.tintColor = imageSelectedColor
+                    }else{
+                        subview.tintColor = imageNormalColor
+                    }
+                }
+            }
+        }
     }
     
     func getMinxForSegment(index:Int) -> CGFloat {

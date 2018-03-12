@@ -53,7 +53,7 @@ public class SegmentMenuController: UIViewController{
     public var segmentScrollView:SegmentScrollView!
     
     var toolBarHeight:NSLayoutConstraint!
-    var items:[String]!
+    var items:[Any]!
     var delegate:SegmentMenuProtocol!
     var viewControllers:[Int:UIViewController] = [Int:UIViewController]()
 
@@ -63,7 +63,7 @@ public class SegmentMenuController: UIViewController{
     var isSwipeLocked = false
    
     
-    public func config(with items:[String],delegate:SegmentMenuProtocol){
+    public func config(with items:[Any],delegate:SegmentMenuProtocol){
 
         self.items = items
         self.delegate = delegate
@@ -117,6 +117,7 @@ public class SegmentMenuController: UIViewController{
                                                                        options: NSLayoutFormatOptions(rawValue: 0), metrics: nil,
                                                                        views: ["segmentScrollView":segmentScrollView]))
         }
+        
         
     }
     func addToolBarToSuperView(){

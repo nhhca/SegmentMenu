@@ -24,8 +24,10 @@ extension SegmentMenuController {
         self.extraWidth = 0
         
         let width = UIScreen.main.bounds.size.width
-        self.segmentControl.setWidth(width / 2, forSegmentAt: 0)
-        self.segmentControl.setWidth(width / 2, forSegmentAt: 1)
+        self.segmentControl.setWidth(width / 3, forSegmentAt: 0)
+        self.segmentControl.setWidth(width / 3, forSegmentAt: 1)
+        self.segmentControl.setWidth(width / 3, forSegmentAt: 2)
+       // self.segmentControl.line.backgroundColor = UIColor.red
         self.view.backgroundColor = UIColor.clear
         self.segmentScrollView.backgroundColor = UIColor.clear
         self.setNormalColor(color: UIColor.blue, font: UIFont.systemFont(ofSize: 14))
