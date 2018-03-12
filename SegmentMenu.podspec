@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SegmentMenu"
-  s.version      = "1.2.1"
+  s.version      = "1.2.5"
   s.summary      = "swift SegmentMenu."
 
   # This description is used to generate tags and improve search results.

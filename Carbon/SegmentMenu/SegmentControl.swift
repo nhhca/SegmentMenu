@@ -28,6 +28,7 @@ public class SegmentControl: UISegmentedControl{
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
+    
     override init(items: [Any]?) {
         super.init(items: items)
         
@@ -84,7 +85,10 @@ public class SegmentControl: UISegmentedControl{
     }
     
     
-    
+    override public func setImage(_ image: UIImage?, forSegmentAt segment: Int) {
+        super.setImage(image, forSegmentAt: segment)
+        synImageColor()
+    }
     func updateIndicatorWithAnimation(with animate:Bool){
         let indicatorY = self.frame.size.height - self.indicatorHeight
         UIView.animate(withDuration: animate ? 0.3:0) {
