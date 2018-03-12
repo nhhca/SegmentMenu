@@ -14,6 +14,7 @@ public class SegmentControl: UISegmentedControl{
     var IndicatorWidth:CGFloat = 0
     let indicator = UIImageView()
     public var line = UIView()
+    public var shouldSynImageColor = false
     var imageNormalColor:UIColor = .clear
     var imageSelectedColor:UIColor = .clear
     public var extraWidth:CGFloat = 0{
@@ -131,13 +132,15 @@ public class SegmentControl: UISegmentedControl{
         }
     }
     func synImageColor(){
-        for (index, segment) in self.segments.enumerated() {
-            for subview in segment.subviews{
-                if subview.isKind(of: UIImageView.self){
-                    if index == selectedSegmentIndex{
-                        subview.tintColor = imageSelectedColor
-                    }else{
-                        subview.tintColor = imageNormalColor
+        if shouldSynImageColor{
+            for (index, segment) in self.segments.enumerated() {
+                for subview in segment.subviews{
+                    if subview.isKind(of: UIImageView.self){
+                        if index == selectedSegmentIndex{
+                            subview.tintColor = imageSelectedColor
+                        }else{
+                            subview.tintColor = imageNormalColor
+                        }
                     }
                 }
             }
