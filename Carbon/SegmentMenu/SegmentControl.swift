@@ -90,7 +90,7 @@ public class SegmentControl: UISegmentedControl{
         super.setImage(image, forSegmentAt: segment)
         synImageColor()
     }
-    func updateIndicatorWithAnimation(with animate:Bool){
+   public func updateIndicatorWithAnimation(with animate:Bool){
         let indicatorY = self.frame.size.height - self.indicatorHeight
         UIView.animate(withDuration: animate ? 0.3:0) {
             var rect = self.indicator.frame;
@@ -132,15 +132,13 @@ public class SegmentControl: UISegmentedControl{
         }
     }
     func synImageColor(){
-        if shouldSynImageColor{
-            for (index, segment) in self.segments.enumerated() {
-                for subview in segment.subviews{
-                    if subview.isKind(of: UIImageView.self){
-                        if index == selectedSegmentIndex{
-                            subview.tintColor = imageSelectedColor
-                        }else{
-                            subview.tintColor = imageNormalColor
-                        }
+        for (index, segment) in self.segments.enumerated() {
+            for subview in segment.subviews{
+                if subview.isKind(of: UIImageView.self){
+                    if index == selectedSegmentIndex{
+                        subview.tintColor = imageSelectedColor
+                    }else{
+                        subview.tintColor = imageNormalColor
                     }
                 }
             }
